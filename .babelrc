@@ -1,0 +1,22 @@
+{
+  "plugins": [
+    [
+      "module-resolver", {
+        "root": ["."]
+      }
+    ],
+    [
+      "wrap-in-js", {
+        "extensions": ["css$"]
+      }
+    ],
+    [
+      "transform-define",
+      "./env.config.js"
+    ]
+  ],
+  "presets": [
+    "next/babel"
+  ],
+  "ignore": []
+}
