@@ -1,0 +1,30 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: ./containers/nginx
+      dockerfile: ./containers/nginx/Dockerfile
+    container_name: nginx.fwd.ui
+    depends_on:
+      - nodejs
+    ports:
+      - "8081:80"
+    volumes:
+      - ../:/data/app
+    networks:
+      - private
+  nodejs:
+    build:
+      context: ./containers/nodejs
+      dockerfile: ./containers/nodejs/Dockerfile
+    container_name: nodejs.fwd.ui
+    ports:
+      - "4000:4000"
+    volumes:
+      - ../:/data/app
+    networks:
+      - private
+networks:
+  private:
+    driver: bridge
